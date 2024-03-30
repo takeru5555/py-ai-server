@@ -1,0 +1,18 @@
+{
+	"python.analysis.typeCheckingMode": "basic",
+	"files.exclude": {
+		".next": true,
+		"**/__pycache__": true,
+		"**/venv": true
+	},
+	"python.defaultInterpreterPath": "./venv/bin/python",
+	"[python]": {
+		"editor.defaultFormatter": "eeyore.yapf",
+		"editor.formatOnSave": true,
+		"editor.formatOnType": false
+	},
+	"yapf.args": [
+		"--style",
+		"{INDENT_WIDTH: 2, USE_TABS: true, COLUMN_LIMIT: 65, CONTINUATION_ALIGN_STYLE: 'valign-right', CONTINUATION_INDENT_WIDTH: 2, BLANK_LINE_BEFORE_NESTED_CLASS_OR_DEF: false, BLANK_LINES_AROUND_TOP_LEVEL_DEFINITION: 1, BLANK_LINES_BETWEEN_TOP_LEVEL_IMPORTS_AND_VARIABLES: 1, COALESCE_BRACKETS: true, DEDENT_CLOSING_BRACKETS: true}"
+	]
+}
