@@ -1,0 +1,32 @@
+import logging
+
+LOG_LEVEL = logging.INFO
+
+HOST = '127.0.0.1'
+PORT = 5000
+
+DEVICE_MAP = {
+	'img': 'cuda',
+	'llm': 'cuda',
+	'tts': 'cuda',
+	'stt': 'cuda',
+}
+
+LLM_MODELS_DIR = '/your/llm/models/dir'
+TTS_MODELS_DIR = '/your/tts/models/dir'
+IMG_MODELS_DIR = '/your/sd/models/dir'
+
+LLM_MODEL = 'filename.smthing'
+# downloading via hf: not implemented -- use download endpoint
+# LLM_MODEL = 'hf:HuggingFaceModel/Name'
+TTS_MODEL = 'tts_models/multilingual/multi-dataset/xtts_v2'
+IMG_MODEL = 'model.safetensors'
+
+TTS_VOICES_DIR = '/your/tts/voices/dir'
+TTS_OUTPUT_DIR = '/your/tts/output/dir'
+
+STT_INPUT_DIR = '/your/stt/input/dir'
+
+LLM_DEFAULT_SEED = -1
+LLM_MAX_SEQ_LEN = 4096  # (n_ctx)
+LLM_SCALE_POS_EMB = 1.5
