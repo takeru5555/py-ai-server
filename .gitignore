@@ -152,7 +152,7 @@ cython_debug/
 #.idea/
 
 settings.py
-py_api/scripts/**/*.wav
-py_api/scripts/**/*.mp4
-py_api/scripts/**/input*.txt
-py_api/scripts/out/**/*
+app/scripts/**/*.wav
+app/scripts/**/*.mp4
+app/scripts/**/input*.txt
+app/scripts/out/**/*
