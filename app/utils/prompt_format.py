@@ -17,7 +17,49 @@
 import fnmatch, os
 from app.models.llm.llm_api import PromptPart, PromptParts
 
+model_formats = {
+	'*dolphin-2*': 'ChatML',
+	'*emerhyst-20b*': 'Alpaca',
+	'*luna-ai-llama2*': 'UserAssistant',
+	'*mistral-7b-instruct*': 'MistralInstruct',
+	'*mythalion-13b*': 'Alpaca',
+	'*mythomax-l2-13b*': 'Alpaca',
+	'*openhermes-2.*-mistral-7b*': 'ChatML',
+	'*platypus-30b*': 'Alpaca',
+	'*solar-10.7b-instruct*': 'UserAssistantNewlines',
+	'*nous-hermes-2-solar-10.7b*': 'ChatML',
+	'*openchat-3.5-1210*': 'OpenChatCorrect',
+}
+
 class Formatter:
+	# Prompt template: OpenChat-Correct
+	# GPT4 Correct User: {prompt}<|end_of_turn|>GPT4 Correct Assistant:
+	def OpenChatCorrect(
+		self,
+		user: str,
+		system: str = '',
+		prefix_response='',
+		prior_msgs=[],
+		user_role='user',
+		assistant_role='assistant'
+	):
+		prompt = ''
+		if system != '':
+			prompt += system.strip() + '\n'
+		if len(prior_msgs) > 0:
+			for msg in prior_msgs:
+				prompt += msg['role'].capitalize(
+				) + ': ' + msg['content'] + '\n'
+		prompt += user_role.capitalize() + ': '
+		prompt += user.strip() + '\n'
+		if prefix_response == '':
+			if len(prior_msgs) > 0:
+				prompt += assistant_role.capitalize() + ': '
+			prompt += '<|end_of_turn|>'
+		else:
+			prompt += prefix_response
+		return prompt
+
 	# TODO use consistent casing of role names
 	# (e.g. user vs USER)
 	def flexible(
@@ -255,18 +297,6 @@ def parts_to_str(parts: list[PromptPart]):
 			partStr = f'{pre}{part.val}{suf}'
 			s += partStr
 	return s
-
-model_formats = {
-	'*dolphin-2*': 'ChatML',
-	'*emerhyst-20b*': 'Alpaca',
-	'*luna-ai-llama2*': 'UserAssistant',
-	'*mistral-7b-instruct*': 'MistralInstruct',
-	'*mythalion-13b*': 'Alpaca',
-	'*mythomax-l2-13b*': 'Alpaca',
-	'*openhermes-2.*-mistral-7b*': 'ChatML',
-	'*platypus-30b*': 'Alpaca',
-	'*solar-10.7b-instruct*': 'UserAssistantNewlines',
-}
 
 def get_model_format(model: str) -> str:
 	fmt = None
