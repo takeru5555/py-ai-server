@@ -1,7 +1,7 @@
 from typing import Union
-from py_api.client.base_manager import BaseAIManager
-from py_api.client.stt import STTClient_WhisperCpp, STTClient_WhisperX
-from py_api.models.stt.stt_client import TranscribeOptions, TranscribeResponse
+from app.client.base_manager import BaseAIManager
+from app.client.stt import STTClient_WhisperCpp, STTClient_WhisperX
+from app.models.stt.stt_client import TranscribeOptions, TranscribeResponse
 
 class STTManager(BaseAIManager):
 	clients = {

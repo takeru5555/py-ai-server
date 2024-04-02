@@ -1,7 +1,7 @@
 from typing import Generator, List, Dict, Union, Any
-from py_api.models.llm.llm_api import CompletionReturn
-from py_api.models.llm.client import CompletionOptions, CompletionOptions_LlamaCppPython, CompletionOptions_Exllamav2
-from py_api.settings import DEVICE_MAP
+from app.models.llm.llm_api import CompletionReturn
+from app.models.llm.client import CompletionOptions, CompletionOptions_LlamaCppPython, CompletionOptions_Exllamav2
+from app.settings import DEVICE_MAP
 
 class LLMClient_Base:
 	_instance = None

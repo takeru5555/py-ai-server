@@ -15,7 +15,7 @@
 # make Formatter class with methods like `flexible`, `Alpaca` and `ChatML`
 
 import fnmatch, os
-from py_api.models.llm.llm_api import PromptPart, PromptParts
+from app.models.llm.llm_api import PromptPart, PromptParts
 
 class Formatter:
 	# TODO use consistent casing of role names

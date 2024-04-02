@@ -1,7 +1,7 @@
 from typing import Generator, List, Dict, Union, Any
 from pydantic import BaseModel
-from py_api.models.img.img_client import Txt2ImgOptions, Txt2ImgResponse
-from py_api.settings import DEVICE_MAP
+from app.models.img.img_client import Txt2ImgOptions, Txt2ImgResponse
+from app.settings import DEVICE_MAP
 
 class ImgClient_Base:
 	_instance = None

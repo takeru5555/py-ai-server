@@ -2,10 +2,10 @@ import logging
 import os
 import time
 from fastapi import FastAPI, HTTPException, UploadFile, File, Query
-from py_api.args import Args
-from py_api.client.stt_client_manager import STTManager
-from py_api.models.stt.stt_client import TranscribeResponse
-from py_api.utils import audio
+from app.args import Args
+from app.client.stt_client_manager import STTManager
+from app.models.stt.stt_client import TranscribeResponse
+from app.utils import audio
 
 logger = logging.getLogger(__name__)
 

@@ -1,6 +1,6 @@
 import base64, logging, os, time
-from py_api.args import Args
-from py_api.models.tts.tts_client import SpeakOptions, SpeakToFileOptions, SpeakResponse, SpeakToFileResponse
+from app.args import Args
+from app.models.tts.tts_client import SpeakOptions, SpeakToFileOptions, SpeakResponse, SpeakToFileResponse
 from .base import TTSClient_Base
 from TTS.api import TTS
 import torch

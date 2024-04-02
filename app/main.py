@@ -6,11 +6,11 @@ import argparse, logging, os
 import uvicorn, fastapi
 from fastapi.middleware.cors import CORSMiddleware
 
-# from py_api.api import img_api, llm_api, stt_api, tts_api, utils_api
-from py_api.args import Args
-# from py_api.client import llm_client_manager, tts_client_manager, stt_client_manager, img_client_manager
-from py_api.settings import HOST, PORT, LLM_MODELS_DIR, LLM_MODEL, TTS_MODELS_DIR, TTS_MODEL, TTS_OUTPUT_DIR, TTS_VOICES_DIR, STT_INPUT_DIR, IMG_MODELS_DIR, IMG_MODEL
-from py_api.utils import prompt_format
+# from app.api import img_api, llm_api, stt_api, tts_api, utils_api
+from app.args import Args
+# from app.client import llm_client_manager, tts_client_manager, stt_client_manager, img_client_manager
+from app.settings import HOST, PORT, LLM_MODELS_DIR, LLM_MODEL, TTS_MODELS_DIR, TTS_MODEL, TTS_OUTPUT_DIR, TTS_VOICES_DIR, STT_INPUT_DIR, IMG_MODELS_DIR, IMG_MODEL
+from app.utils import prompt_format
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(
@@ -159,8 +159,8 @@ if __name__ == '__main__':
 	)
 
 	if not args.no_llm:
-		from py_api.api.llm_api import llm_api
-		from py_api.client.llm_client_manager import LLMManager
+		from app.api.llm_api import llm_api
+		from app.client.llm_client_manager import LLMManager
 		llmManager = LLMManager.instance
 		if llm_model is not None:
 			fmt = prompt_format.get_model_format(llm_model)
@@ -170,15 +170,15 @@ if __name__ == '__main__':
 		llm_api(app)
 
 	if not args.no_tts:
-		from py_api.api.tts_api import tts_api
-		from py_api.client.tts_client_manager import TTSManager
+		from app.api.tts_api import tts_api
+		from app.client.tts_client_manager import TTSManager
 		ttsManager = TTSManager.instance
 		ttsManager.load_model(tts_model)
 		tts_api(app)
 
 	if not args.no_stt:
-		from py_api.api.stt_api import stt_api
-		from py_api.client.stt_client_manager import STTManager
+		from app.api.stt_api import stt_api
+		from app.client.stt_client_manager import STTManager
 		sttManager = STTManager.instance
 		try:
 			sttManager.load_model('whisperx')
@@ -188,13 +188,13 @@ if __name__ == '__main__':
 		stt_api(app)
 
 	if not args.no_img:
-		from py_api.api.img_api import img_api
-		from py_api.client.img_client_manager import ImgManager
+		from app.api.img_api import img_api
+		from app.client.img_client_manager import ImgManager
 		imgManager = ImgManager.instance
 		imgManager.load_model('')
 		img_api(app)
 
-	from py_api.api.utils_api import utils_api
+	from app.api.utils_api import utils_api
 	utils_api(app)
 
 	uvicorn.run(app, host=args.host, port=args.port)

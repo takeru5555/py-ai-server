@@ -2,12 +2,12 @@ import logging, os, time
 from fastapi import FastAPI, HTTPException, Path, WebSocket
 from fastapi.responses import JSONResponse
 from huggingface_hub import snapshot_download
-from py_api.args import Args
-from py_api.client import llm_client_manager
-from py_api.client.llm import LLMClient_OpenAI
-from py_api.models.llm.llm_api import CompletionRequest, CompletionResponse, DownloadModelRequest, DownloadModelResponse, ListModelsResponse, GetModelResponse, LoadModelResponse, UnloadModelRequest, LoadModelRequest
-from py_api.models.llm.client import CompletionOptions, MessageObject
-from py_api.utils import prompt_format
+from app.args import Args
+from app.client import llm_client_manager
+from app.client.llm import LLMClient_OpenAI
+from app.models.llm.llm_api import CompletionRequest, CompletionResponse, DownloadModelRequest, DownloadModelResponse, ListModelsResponse, GetModelResponse, LoadModelResponse, UnloadModelRequest, LoadModelRequest
+from app.models.llm.client import CompletionOptions, MessageObject
+from app.utils import prompt_format
 
 # supported extensions
 EXTENSIONS = ['.gguf', '.ggml', '.safetensor']

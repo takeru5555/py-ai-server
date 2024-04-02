@@ -1,6 +1,6 @@
 from typing import Union, Any
 from pydantic import BaseModel, Field
-from py_api.models.llm.client import CompletionOptions, MessageObject
+from app.models.llm.client import CompletionOptions, MessageObject
 
 class PromptPart(BaseModel):
 	use: bool = Field(

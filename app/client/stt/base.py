@@ -1,5 +1,5 @@
-from py_api.models.stt.stt_client import TranscribeOptions, TranscribeResponse
-from py_api.settings import DEVICE_MAP
+from app.models.stt.stt_client import TranscribeOptions, TranscribeResponse
+from app.settings import DEVICE_MAP
 
 class STTClient_Base:
 	_instance = None

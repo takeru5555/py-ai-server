@@ -1,10 +1,10 @@
 from typing import Union, Dict, TypeVar
 import logging, os
-from py_api.args import Args
-from py_api.client.base_manager import BaseAIManager
-from py_api.client.llm import LLMClient_LlamaCppPython, LLMClient_Exllamav2, LLMClient_OpenAI, LLMClient_Transformers
-from py_api.models.llm.llm_api import CompletionReturn
-from py_api.models.llm.client import CompletionOptions, CompletionOptions_LlamaCppPython, CompletionOptions_Exllamav2, CompletionOptions_Transformers
+from app.args import Args
+from app.client.base_manager import BaseAIManager
+from app.client.llm import LLMClient_LlamaCppPython, LLMClient_Exllamav2, LLMClient_OpenAI, LLMClient_Transformers
+from app.models.llm.llm_api import CompletionReturn
+from app.models.llm.client import CompletionOptions, CompletionOptions_LlamaCppPython, CompletionOptions_Exllamav2, CompletionOptions_Transformers
 
 ClientUnion = Union[LLMClient_LlamaCppPython,
 										LLMClient_Exllamav2, LLMClient_OpenAI,

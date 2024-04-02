@@ -1,10 +1,10 @@
 from typing import Generator, List, Dict, Union
 import requests
-from py_api.models.llm.llm_api import CompletionResult
-from py_api.models.llm.client import CompletionOptions, CompletionOptions_LlamaCppPython, CompletionOptions_Exllamav2, CompletionOptions_OpenAI
+from app.models.llm.llm_api import CompletionResult
+from app.models.llm.client import CompletionOptions, CompletionOptions_LlamaCppPython, CompletionOptions_Exllamav2, CompletionOptions_OpenAI
 from .base import LLMClient_Base
 from ._utils import text_completion
-from py_api.settings import OPENAI_API_KEY
+from app.settings import OPENAI_API_KEY
 
 # so, with this there is no loading models, you pick which model when calling complete
 class LLMClient_OpenAI(LLMClient_Base):

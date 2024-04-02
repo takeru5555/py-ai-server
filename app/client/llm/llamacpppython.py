@@ -1,8 +1,8 @@
 from typing import Union
 import logging, os, time
-from py_api.args import Args
-from py_api.models.llm.client import CompletionOptions, CompletionOptions_LlamaCppPython
-from py_api.utils.llm_models import parse_size_and_quant
+from app.args import Args
+from app.models.llm.client import CompletionOptions, CompletionOptions_LlamaCppPython
+from app.utils.llm_models import parse_size_and_quant
 from .base import LLMClient_Base
 from ._utils import text_completion
 from llama_cpp import Llama, LlamaGrammar, LlamaCache

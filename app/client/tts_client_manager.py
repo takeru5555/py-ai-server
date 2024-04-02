@@ -1,8 +1,8 @@
 from typing import Union
-from py_api.args import Args
-from py_api.client.base_manager import BaseAIManager
-from py_api.client.tts import TTSClient_Coqui
-from py_api.models.tts.tts_client import SpeakOptions, SpeakToFileOptions, SpeakResponse, SpeakToFileResponse
+from app.args import Args
+from app.client.base_manager import BaseAIManager
+from app.client.tts import TTSClient_Coqui
+from app.models.tts.tts_client import SpeakOptions, SpeakToFileOptions, SpeakResponse, SpeakToFileResponse
 
 class TTSManager(BaseAIManager):
 	clients: dict[str, TTSClient_Coqui] = {

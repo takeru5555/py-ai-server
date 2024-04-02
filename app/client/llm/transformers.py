@@ -1,6 +1,6 @@
 import logging, os, time
-from py_api.args import Args
-from py_api.models.llm.client import CompletionOptions, CompletionOptions_Transformers
+from app.args import Args
+from app.models.llm.client import CompletionOptions, CompletionOptions_Transformers
 from .base import LLMClient_Base
 from ._utils import text_completion
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline

@@ -1,11 +1,11 @@
 import logging, os, time
 from fastapi import FastAPI, HTTPException, Path, WebSocket
 from fastapi.responses import JSONResponse, FileResponse
-from py_api.args import Args
-from py_api.client import tts_client_manager
-from py_api.models.common_api import GetModelResponse, ListModelsResponse, LoadModelResponse, UnloadModelResponse
-from py_api.models.tts.tts_api import SpeakRequest, SpeakToFileRequest, ListVoicesResponse
-from py_api.models.tts.tts_client import SpeakResponse, SpeakToFileResponse
+from app.args import Args
+from app.client import tts_client_manager
+from app.models.common_api import GetModelResponse, ListModelsResponse, LoadModelResponse, UnloadModelResponse
+from app.models.tts.tts_api import SpeakRequest, SpeakToFileRequest, ListVoicesResponse
+from app.models.tts.tts_client import SpeakResponse, SpeakToFileResponse
 
 EXTENSIONS = []
 logger = logging.getLogger(__name__)

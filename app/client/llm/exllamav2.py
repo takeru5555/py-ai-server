@@ -1,6 +1,6 @@
 import logging, os, time
-from py_api.args import Args
-from py_api.models.llm.client import CompletionOptions, CompletionOptions_Exllamav2
+from app.args import Args
+from app.models.llm.client import CompletionOptions, CompletionOptions_Exllamav2
 from .base import LLMClient_Base
 from exllamav2 import ExLlamaV2, ExLlamaV2Cache, ExLlamaV2Config, ExLlamaV2Tokenizer
 from exllamav2.generator import ExLlamaV2StreamingGenerator, ExLlamaV2Sampler

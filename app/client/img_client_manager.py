@@ -1,8 +1,8 @@
 from typing import Union, Dict
 import os
-from py_api.args import Args
-from py_api.client.base_manager import BaseAIManager
-from py_api.client.img import ImgClient_Diffusers
+from app.args import Args
+from app.client.base_manager import BaseAIManager
+from app.client.img import ImgClient_Diffusers
 
 ClientUnion = ImgClient_Diffusers
 ClientDict = Dict[str, ClientUnion]

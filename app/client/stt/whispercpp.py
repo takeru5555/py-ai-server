@@ -1,6 +1,6 @@
 import re, subprocess
 from .base import STTClient_Base
-from py_api.models.stt.stt_client import TranscribeOptions, TranscribeResponse
+from app.models.stt.stt_client import TranscribeOptions, TranscribeResponse
 
 class STTClient_WhisperCpp(STTClient_Base):
 	whisper_cpp_path = '/home/user/whisper.cpp'

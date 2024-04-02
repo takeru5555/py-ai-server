@@ -2,10 +2,10 @@ import logging, os, time
 from typing import List, Union
 from fastapi import FastAPI, HTTPException, WebSocket
 from fastapi.responses import JSONResponse, FileResponse
-from py_api.args import Args
-from py_api.client import img_client_manager
-from py_api.models.common_api import GetModelResponse, ListModelsResponse, LoadModelRequest, LoadModelResponse, UnloadModelResponse
-from py_api.models.img.img_client import Txt2ImgOptions, Txt2ImgResponse
+from app.args import Args
+from app.client import img_client_manager
+from app.models.common_api import GetModelResponse, ListModelsResponse, LoadModelRequest, LoadModelResponse, UnloadModelResponse
+from app.models.img.img_client import Txt2ImgOptions, Txt2ImgResponse
 
 EXTENSIONS = []
 logger = logging.getLogger(__name__)

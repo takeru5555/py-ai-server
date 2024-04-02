@@ -1,8 +1,8 @@
 import datetime, os, re, subprocess
 import whisperx
 from .base import STTClient_Base
-from py_api.models.stt.stt_client import TranscribeOptions, TranscribeResponse
-from py_api.settings import HF_TOKEN
+from app.models.stt.stt_client import TranscribeOptions, TranscribeResponse
+from app.settings import HF_TOKEN
 
 class STTClient_WhisperX(STTClient_Base):
 	raw_model = None

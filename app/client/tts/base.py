@@ -1,6 +1,6 @@
 from typing import Union
-from py_api.models.tts.tts_client import SpeakOptions, SpeakToFileOptions, SpeakResponse, SpeakToFileResponse
-from py_api.settings import DEVICE_MAP
+from app.models.tts.tts_client import SpeakOptions, SpeakToFileOptions, SpeakResponse, SpeakToFileResponse
+from app.settings import DEVICE_MAP
 
 # TODO i guess do we need a Base class for these Base classes?
 #   could have helper for converting options in diff ways

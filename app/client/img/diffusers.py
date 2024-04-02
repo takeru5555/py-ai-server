@@ -1,5 +1,10 @@
-from py_api.client.img.base import ImgClient_Base
-from py_api.models.img.img_client import Txt2ImgOptions, Txt2ImgResponse
+from io import BytesIO
+import base64, os
+import torch
+from typing import Union, List, Any, Dict
+from app.args import Args
+from app.client.img.base import ImgClient_Base
+from app.models.img.img_client import Txt2ImgOptions, Txt2ImgResponse
 from PIL import Image
 from diffusers.pipelines.auto_pipeline import AutoPipelineForText2Image
 from diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion import StableDiffusionPipeline
@@ -7,18 +12,9 @@ from diffusers.pipelines.stable_diffusion_xl.pipeline_stable_diffusion_xl import
 from diffusers.pipelines.stable_diffusion_xl.pipeline_stable_diffusion_xl_img2img import StableDiffusionXLImg2ImgPipeline
 from diffusers.pipelines.stable_diffusion.pipeline_output import StableDiffusionPipelineOutput
 from diffusers.pipelines.pipeline_utils import DiffusionPipeline
-import base64, time
-from io import BytesIO
 from diffusers.models.autoencoders.autoencoder_kl import AutoencoderKL
-
 from diffusers.schedulers.scheduling_dpmsolver_multistep import DPMSolverMultistepScheduler
 from diffusers.schedulers.scheduling_euler_ancestral_discrete import EulerAncestralDiscreteScheduler
-
-import torch
-
-from typing import Union, List, Any, Dict
-from py_api.args import Args
-import os, json
 
 SamplersUnion = Union[DPMSolverMultistepScheduler,
 											EulerAncestralDiscreteScheduler]

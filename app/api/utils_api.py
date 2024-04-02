@@ -10,9 +10,9 @@ import magic
 import subprocess as sp
 from fastapi import FastAPI, HTTPException, UploadFile, File, Query
 from fastapi.responses import FileResponse
-from py_api.args import Args
-from py_api.models.utils_api import GetVRAMResponse
-from py_api.utils import audio
+from app.args import Args
+from app.models.utils_api import GetVRAMResponse
+from app.utils import audio
 
 mime = magic.Magic(mime=True)
 logger = logging.getLogger(__name__)
