@@ -6,14 +6,17 @@ fastapi == 0.108.0
 gradio == 4.13.0
 huggingface_hub
 librosa
-numpy ==  1.26.3
+numpy >=  1.22.0
 omegaconf == 2.3.0
 pydantic == 2.5.3
+pydantic_settings
 python-dotenv == 1.0.0
 python-magic
 scipy == 1.11.4
 simpleaudio == 1.0.4
+sse_starlette
 # styletts2 == 0.1.4
+starlette_context
 torch == 2.1
 torchaudio == 2.1
 TTS == 0.22.0
