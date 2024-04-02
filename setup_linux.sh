@@ -1,12 +1,11 @@
 #!/bin/bash
 
-cd ./py_api
 
 if [ ! -d "venv" ]; then
-		python3 -m venv venv
-		source ./venv/bin/activate
+	python3 -m venv venv
+	source ./venv/bin/activate
 else
-		source ./venv/bin/activate
+	source ./venv/bin/activate
 fi
 
 # install llama-cpp-python with cuBLAS
