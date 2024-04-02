@@ -35,7 +35,7 @@ if __name__ == '__main__':
 	# Group for LLM
 	llm_group = parser.add_argument_group('llm')
 	llm_group.add_argument(
-		'--no-llm', action='store_true', help='Disable LLM.'
+		'--llm', action='store_true', help='Disable LLM.'
 	)
 	llm_group.add_argument(
 		'--llm-models-dir',
@@ -53,7 +53,7 @@ if __name__ == '__main__':
 	# Group for TTS
 	tts_group = parser.add_argument_group('tts')
 	tts_group.add_argument(
-		'--no-tts', action='store_true', help='Disable TTS.'
+		'--tts', action='store_true', help='Disable TTS.'
 	)
 	tts_group.add_argument(
 		'--tts-models-dir',
@@ -83,7 +83,7 @@ if __name__ == '__main__':
 	# Group for STT
 	stt_group = parser.add_argument_group('stt')
 	stt_group.add_argument(
-		'--no-stt', action='store_true', help='Disable STT.'
+		'--stt', action='store_true', help='Disable STT.'
 	)
 	stt_group.add_argument(
 		'--stt-input-dir',
@@ -95,7 +95,7 @@ if __name__ == '__main__':
 	# Group for Img
 	img_group = parser.add_argument_group('img')
 	img_group.add_argument(
-		'--no-img', action='store_true', help='Disable Img AI.'
+		'--img', action='store_true', help='Disable Img AI.'
 	)
 	img_group.add_argument(
 		'--img-models-dir',
@@ -158,7 +158,7 @@ if __name__ == '__main__':
 		allow_headers=["*"],
 	)
 
-	if not args.no_llm:
+	if args.llm:
 		from app.api.llm_api import llm_api
 		from app.client.llm_client_manager import LLMManager
 		llmManager = LLMManager.instance
@@ -169,14 +169,14 @@ if __name__ == '__main__':
 		llmManager.load_model(llm_model)
 		llm_api(app)
 
-	if not args.no_tts:
+	if args.tts:
 		from app.api.tts_api import tts_api
 		from app.client.tts_client_manager import TTSManager
 		ttsManager = TTSManager.instance
 		ttsManager.load_model(tts_model)
 		tts_api(app)
 
-	if not args.no_stt:
+	if args.stt:
 		from app.api.stt_api import stt_api
 		from app.client.stt_client_manager import STTManager
 		sttManager = STTManager.instance
@@ -187,7 +187,7 @@ if __name__ == '__main__':
 			logger.warning('Failed to load STT model. Out of memory?')
 		stt_api(app)
 
-	if not args.no_img:
+	if args.img:
 		from app.api.img_api import img_api
 		from app.client.img_client_manager import ImgManager
 		imgManager = ImgManager.instance
