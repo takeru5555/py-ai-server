@@ -10,10 +10,10 @@
 			"request": "launch",
 			"module": "app.main",
 			"args": [
-				// "--no-llm",
-				// "--no-tts",
-				// "--no-stt",
-				// "--no-img",
+				// "--llm",
+				// "--tts",
+				// "--stt",
+				// "--img",
 			],
 			"justMyCode": true
 		}
