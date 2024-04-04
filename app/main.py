@@ -6,11 +6,11 @@ import argparse, logging, os
 import uvicorn, fastapi
 from fastapi.middleware.cors import CORSMiddleware
 
-# from app.api import img_api, llm_api, stt_api, tts_api, utils_api
 from app.args import Args
-# from app.client import llm_client_manager, tts_client_manager, stt_client_manager, img_client_manager
 from app.settings import HOST, PORT, LLM_MODELS_DIR, LLM_MODEL, TTS_MODELS_DIR, TTS_MODEL, TTS_OUTPUT_DIR, TTS_VOICES_DIR, STT_INPUT_DIR, IMG_MODELS_DIR, IMG_MODEL
 from app.utils import prompt_format
+
+# goal: --openai option (use instead of llm if provided)
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(
@@ -48,6 +48,13 @@ if __name__ == '__main__':
 		type=str,
 		default=LLM_MODEL,
 		help='The LLM model to load.'
+	)
+
+	openai_group = parser.add_argument_group('openai')
+	openai_group.add_argument(
+		'--openai',
+		action='store_true',
+		help='Use OpenAI instead of LLM.'
 	)
 
 	# Group for TTS
@@ -158,16 +165,27 @@ if __name__ == '__main__':
 		allow_headers=["*"],
 	)
 
-	if args.llm:
-		from app.api.llm_api import llm_api
-		from app.client.llm_client_manager import LLMManager
-		llmManager = LLMManager.instance
-		if llm_model is not None:
-			fmt = prompt_format.get_model_format(llm_model)
-			logger.info(f'Loading LLM model: {llm_model}')
-			logger.info(f'Detected model prompt format: {fmt}')
-		llmManager.load_model(llm_model)
-		llm_api(app)
+	if args.llm or args.openai:
+		if args.openai:
+			from llama_cpp.server.__main__ import main
+			import sys
+			model_path = os.path.join(LLM_MODELS_DIR, llm_model)
+			os.environ['PORT'] = str(args.port + 1)
+			sys.argv = [
+				'llama_cpp.server', '--model', model_path,
+				'--n_gpu_layers', '35', '--cache', 'true'
+			]
+			main()
+		else:
+			from app.api.llm_api import llm_api
+			from app.client.llm_client_manager import LLMManager
+			llmManager = LLMManager.instance
+			if llm_model is not None:
+				fmt = prompt_format.get_model_format(llm_model)
+				logger.info(f'Loading LLM model: {llm_model}')
+				logger.info(f'Detected model prompt format: {fmt}')
+			llmManager.load_model(llm_model)
+			llm_api(app)
 
 	if args.tts:
 		from app.api.tts_api import tts_api
