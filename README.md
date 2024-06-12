@@ -2,15 +2,13 @@
 
 ## Overview
 
-This is an api server to support my `ai-experiments` collection of demos.
+This is an api server to support my [`ai-experiments`](https://github.com/parsehex/ai-experiments) collection of demos/prototypes.
 
-Instead of finding and using yet another third-party server (likely several of them) to serve an api I'm just going to make an api that does what I need.
+Instead of finding and using a growing number of server projects to serve separate apis, I made an api server that does what I need.
 
-This may be a learning experience but hopefully it grows into something standalone. For now there's lots to do.
+This was/is mostly a learning exercise to introduce myself to lower-level inference on AI models.
 
-## Background + IDK
-
-When I start `ai-experiments`, I also start up at least Oobabooga and possibly Automatic1111 or even XTTS too. Having all 3 together would be great, and I think there's a lot that could be done server- / api-side to make app-dev easier and make for a nicer experience.
+The rest of this README and likely other places is out of date. I had the project working but I haven't used it for at least a few months so this is currently unmaintained.
 
 ## Setup
 
