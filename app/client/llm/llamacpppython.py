@@ -19,10 +19,10 @@ def LlamaCppConfig(model_path):
 	return {
 		'model_path': model_path,
 		'n_threads': 8,
-		'n_gpu_layers': 35,  # TODO calc from size and quant
+		'n_gpu_layers': 49,  # TODO calc from size and quant
 		'n_ctx':
 		4096,  # TODO: docs say 0 = from model -- does it work?
-		'verbose': False,  # setting LLM_VERBOSE ?
+		'verbose': True,  # setting LLM_VERBOSE ?
 	}
 
 def LlamaCppCompletionConfig(
@@ -39,10 +39,10 @@ def LlamaCppCompletionConfig(
 		'seed': seed,
 		'stop': stop
 	}
-	if grammar != '' and grammar != None:
-		# TODO: LlamaGrammar.from_json_schema ???
-		# NOTE: from_string seems to fix grammar (like using '+' which leads to issues (i guess because recursion))
-		config['grammar'] = LlamaGrammar.from_string(grammar, False)
+	# if grammar != '' and grammar != None:
+	# 	# TODO: LlamaGrammar.from_json_schema ???
+	# 	# NOTE: from_string seems to fix grammar (like using '+' which leads to issues (i guess because recursion))
+	# 	config['grammar'] = LlamaGrammar.from_string(grammar, False)
 	return config
 
 class LLMClient_LlamaCppPython(LLMClient_Base):
@@ -109,6 +109,23 @@ class LLMClient_LlamaCppPython(LLMClient_Base):
 		self.model_abspath = None
 		self.config = None
 		self.loaded = False
+
+	def chat(self, options: CompletionOptions_LlamaCppPython):
+		if not self.loaded or self.model is None:
+			raise Exception('No model loaded.')
+		assert isinstance(options, CompletionOptions_LlamaCppPython)
+		start = time.time()
+		o = options.model_dump()
+		o = {k: v for k, v in o.items() if v is not None}
+
+		result = self.model.create_chat_completion(**o)
+		# result = self.model.create_completion(**o)
+		end = time.time()
+		logger.debug(f'Generated text in {end - start}s')
+		return {
+			'result': result,
+			'params': o,
+		}
 
 	def complete(self, options: CompletionOptions_LlamaCppPython):
 		if not self.loaded or self.model is None:

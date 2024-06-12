@@ -225,6 +225,7 @@ def llm_api(app: FastAPI):
 				logger.error(e)
 				await websocket.close()
 				break
+			# handle error
 			if data['type'] == 'complete':
 				req = CompletionRequest(**data['data'])
 				try:
