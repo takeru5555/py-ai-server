@@ -1,5 +1,7 @@
 # py-ai-server
 
+As of October 2024 I'm using an M1 Mac and I've started on a slimmed-down version of this project that uses MLX. See the [MLX branch](https://github.com/parsehex/py-ai-server/tree/mlx).
+
 ## Overview
 
 This is an api server to support my [`ai-experiments`](https://github.com/parsehex/ai-experiments) collection of demos/prototypes.
@@ -12,7 +14,7 @@ The rest of this README and likely other places is out of date. I had the projec
 
 ## Setup
 
-`../setup-api.sh`
+`../setup-linux.sh`
 
 ## Structure Info
 
